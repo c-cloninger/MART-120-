@@ -1,0 +1,57 @@
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="Cloninger_H7_StyleSheet.css">
+
+    <script>
+        function getData()
+        {
+            var firstName = document.getElementById("textFirstName").value;
+            var lastName = document.getElementById("textLastName").value;
+            var email = document.getElementById("textEmail").value;
+
+            if (firstName == ""){
+                document.getElementById("textFirstName").style.borderColor = "red";
+            return false;
+            }
+            else if (lastName == ""){
+                document.getElementById("textLastName").style.borderColor = "red";
+                return false;
+            }
+            else if (email == ""){
+                document.getElementById("textEmail").style.borderColor = "red";
+                return false;
+            }
+        }
+
+    </script>
+
+  </head>
+  <body>
+  
+    <div class="header"></div>
+    <div class="navBar">
+        <b>
+            <a href="Cloninger_H8_Home.html">home</a>
+            <a href="Cloninger_H8_Story.html">story</a> 
+            <a id="current" href="Cloninger_H8_Contact.html">contact</a>
+            <a href="Cloninger_H8_MathGame.html">math game</a>
+        </b>    
+    </div>
+
+    <div class="row">
+            <div class="columnLeft">
+                    <div class="backgroundCardLeft" style="padding: 20px;">
+                            <form action="Cloninger_H7_ReturnHome.html" method="post" onsubmit="return getData();" onchange="return getData();">
+                                    First Name: <input type="text" id="textFirstName"><br><br>
+                                    Last Name: <input type="text" id="textLastName"><br><br>
+                                    Email Address: <input type="text" id="textEmail"><br><br>
+                            
+                                    <button id="btnSubmit" onClick="getData();">Submit</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<html>
+    <title>MART120 HW8 Home</title>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="Cloninger_H8_StyleSheet.css">
+
+        <script>
+                var actualAnswer;
+                var number1;
+                var number2;
+                var numberCorrect;
+                var numberWrong;
+                var percentCorrect;
+
+                numberCorrect = 0;
+                numberWrong = 0;
+
+                function printQuestion(){
+                    actualAnswer = number1 + number2;
+                    document.getElementById("theQuestion").innerHTML = "What is " + number1 + "+" + number2 + "?";
+        }
+
+                function checkAnswer(){
+                    var answer = document.getElementById("txtAnswer").value;
+
+                    if(answer == actualAnswer){
+                        document.getElementById("finalResult").innerHTML = "Correct";
+                        numberCorrect = numberCorrect + 1;
+                        document.getElementById("numberCorrect").innerHTML = numberCorrect;
+                        runGame();
+                    }
+                    else if((answer != actualAnswer) && (answer != "")){
+                        document.getElementById("finalResult").innerHTML = "Incorrect";
+                        numberWrong = numberWrong + 1;
+                        document.getElementById("numberWrong").innerHTML = numberWrong;
+                        runGame();
+                    }
+                    else if (answer == ""){
+                        document.getElementById("finalResult").innerHTML = "Please Enter a Value";
+                    }
+        }
+
+        function runGame(){
+
+            var i;
+
+            for(i = 0; i < 10; i++){
+                 number1 = Math.floor(Math.random() * 10);
+                 number2 = Math.floor(Math.random() * 10);
+
+                 if(i === 10) {
+                     break;
+                 }
+                percentCorrect = numberCorrect/10;
+            }
+            document.getElementById("percentCorrect").innerHTML = percentCorrect;
+            printQuestion();
+        }
+        
+        </script>
+
+    </head>
+
+    <body onload="runGame();">
+
+        <div class="header"></div>
+        <div class="navBar">
+            <b>
+                <a href="Cloninger_H8_Home.html">home</a>
+                <a href="Cloninger_H8_Story.html">story</a> 
+                <a href="Cloninger_H8_Contact.html">contact</a>
+                <a id="current" href="Cloninger_H8_MathGame.html">math game</a>
+            </b>    
+            </div>
+
+        <div class="row">
+            <div class="columnLeft">
+                <div class="backgroundCardLeft" style="padding-left: 20px;">
+                        <div id="theQuestion"></div>
+                            <table>
+                            <tr>
+                                <td>Your answer</td>
+                                <td><input type="text" id="txtAnswer"></td>
+                            </tr>
+                            <br>
+                            <tr>
+                                <td colspan="2"><button id="btnSubmit" onClick="checkAnswer();">Submit</button></td>
+                            </tr>
+                        </table>
+                        <br>
+                    <div id="finalResult"></div>
+                </div>    
+            </div>
+        </div>
+
+        <div class=row>
+                <div class="columnRight">
+                    <div class="backgroundCardRight">
+                            <h1 style="color: darkgoldenrod;">scoreboard</h1> 
+                            <h4>correct answers:</h4>
+                            <span id="numberCorrect"></span>
+                            <h4>wrong answers:</h4>
+                            <span id="numberWrong"></span>
+                            <h4>score percentage:</h4>
+                            <span id="percentCorrect"></span>
+                    </div>
+                </div>
+            </div>
+           
+
